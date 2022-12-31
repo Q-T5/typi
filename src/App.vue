@@ -1,6 +1,6 @@
 <template>
-  <div class="bg-red-500 w-full h-screen">
-    <h1 class="text-3xl">App Says: {{ hi }}</h1>
+  <div class="w-full h-screen">
+    <h1 class="text-3xl">App Says: hello</h1>
   </div>
   <div class="w-full h-screen flex flex-col">
     <div class="w-full h-[7%] shadow-md flex justify-around px-4">
@@ -13,7 +13,12 @@
       </button>
     </div>
     <div class="w-full h-[93%]">
-      <component :is="component" class="w-full h-full" />
+      <transition
+        enter-active-class="animate__animated animate__bounceInRight"
+        leave-active-class="animate__animated animate__bounceOutLeft"
+        mode="out-in">
+        <component :is="component" class="w-full h-full p-2" />
+      </transition>
     </div>
   </div>
 </template>
@@ -31,7 +36,6 @@ export default {
   },
   setup: function() {
     // reactive data
-    const hi = ref("Hello World");
     const component = ref("WordComp");
     const buttons = ref([
       { text: "Words", component: "WordComp" },
@@ -39,8 +43,10 @@ export default {
       { text: "Paragraphs", component: "ParagraphComp" },
     ]);
 
+    // functions
+
     return {
-      hi, component, buttons
+      component, buttons
     }
   }
 }
