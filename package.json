@@ -9,7 +9,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "animate.css": "^4.1.1",
     "daisyui": "^2.46.0",
+    "txtgen": "^3.0.4",
     "vue": "^3.2.45"
   },
   "devDependencies": {
