@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.activeComp {
+    @apply border-b-blue-500 border-b-4 rounded-sm text-blue-500;
+}
