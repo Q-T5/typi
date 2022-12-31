@@ -3,10 +3,12 @@
     <h1 class="text-3xl">App Says: {{ hi }}</h1>
   </div>
   <div class="w-full h-screen flex flex-col">
-    <div class="w-full h-[7%] shadow-md flex justify-between px-4">
+    <div class="w-full h-[7%] shadow-md flex justify-around px-4">
       <button 
         v-for="(button, index) in buttons" :key="index"
-        @click="component = button.component">
+        @click="component = button.component"
+        :class="component === button.component ? 'activeComp' : ''"
+        class="w-full text-lg">
         {{ button.text }}
       </button>
     </div>
