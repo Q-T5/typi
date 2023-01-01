@@ -96,9 +96,7 @@ export default {
         }
 
         function preventErase(event) {
-            if(event.key === "Backspace" || event.key === "Delete") {
-               return event.preventDefault();
-            }
+            return event.preventDefault();
         }
 
         // computed properties
