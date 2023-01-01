@@ -41,7 +41,7 @@
         <div class="working-div flex space-y-1">
             <div class="h-3/4 w-full max-w-full flex flex-wrap max-h-[75%] overflow-y-scroll">
                 <span v-for="(word, index) in words" :key="index" :class="word.class">
-                    {{ word.word === " " ? '&nbsp;' : word.word }}
+                    {{ word.word }} &nbsp;
                 </span>
             </div>
             <div class="h-1/4 flex justify-center">
@@ -86,7 +86,9 @@ export default {
         }
 
         function generate() {
+            baseArticle.value = "";
             wordsEntered.value = 0;
+            userInput.value = "";
             if(numberOfParagraphs.value === 1) {
                 baseArticle.value = paragraph();
             } else if(numberOfParagraphs.value > 1) {
@@ -103,10 +105,12 @@ export default {
         function validateProgress() {
             wordsEntered.value++;
             const lastWord = userInput.value.split(" ").pop();
-            if(lastWord === words[wordsEntered.value - 1].word) {
-                words[wordsEntered.value - 1].class = "text-green-500";
+            console.log("Last word: " + lastWord);
+            console.log("Word at that index: " + words.value[wordsEntered.value - 1].word);
+            if(lastWord === words.value[wordsEntered.value - 1].word) {
+                words.value[wordsEntered.value - 1].class = "text-green-500";
             } else {
-                words[wordsEntered.value - 1].class = "text-red-500";
+                words.value[wordsEntered.value - 1].class = "text-red-500";
             }
         }
 
@@ -120,16 +124,7 @@ export default {
                     word: word,
                     class: ""
                 });
-
-                // we then push a space to account for the one removed on line 115
-                // spaces are empty so no classes will be applied, but to prevent errors,
-                // we still push a space with the 'class' key applied
-                modifiedWordsArray.push({
-                    word: " ",
-                    class: ""
-                })
             });
-            console.log(JSON.stringify(modifiedWordsArray));
             return modifiedWordsArray;
         });
 
