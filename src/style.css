@@ -7,7 +7,7 @@
 }
 
 .timer-div {
-    @apply rounded-md p-2 border-[1px] shadow-md shadow-gray-300 h-12;
+    @apply rounded-md p-2 border-[1px] shadow-md shadow-gray-300 h-14;
 }
 
 .working-div {
@@ -16,4 +16,8 @@
 
 .controls-div {
     @apply rounded-md p-2 border-[1px] shadow-md shadow-gray-300 h-1/3;
+}
+
+.timer-btn {
+    @apply daisyui-btn daisyui-btn-circle;
 }
