@@ -22,7 +22,7 @@
                 <div class="flex flex-col border-b border-t py-1">
                     <div class="w-fit daisyui-alert daisyui-alert-warning rounded-md">
                         <i class="material-icons">warning</i>
-                        <p>For beginners, we advice leaving this option unchecked</p>
+                        <p>For strict typing, check the option below</p>
                     </div>
                     <div class="flex items-center space-x-2">
                         <label>Disable Backspace/ Delete: </label>
@@ -48,7 +48,7 @@
                 <textarea 
                     type="text" 
                     class="user-input" 
-                    placeholder="Start Typing"
+                    placeholder="Type In Here"
                     rows="6"
                     v-model="userInput"
                     @keydown.delete="preventErase"

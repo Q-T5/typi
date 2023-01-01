@@ -20,14 +20,20 @@
             <div class="controls-div flex flex-col space-y-1">
                 <h1 class="text-center text-xl">Options</h1>
                 <div class="flex flex-col">
-                    <div class="flex flex-col items-start justify-start space-x-2">
+                    <div class="flex flex-col items-start justify-center border-t py-1">
                         <label>Number of Paragraphs: {{ numberOfParagraphs }}</label>
                         <input type="range" min="1" max="5" v-model="numberOfParagraphs" class="daisyui-range daisyui-range-sm" />
                     </div>
-                    <div class="flex items-center space-x-2">
-                        <label>Disable Backspace/ Delete: </label>
-                        <input type="checkbox" class="daisyui-checkbox border-gray-500 daisyui-checkbox-sm"
-                        v-model="disableErasure" />
+                    <div class="flex flex-col border-b border-t py-1">
+                        <div class="w-fit daisyui-alert daisyui-alert-warning rounded-md">
+                            <i class="material-icons">warning</i>
+                            <p>For strict typing, check the option below</p>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <label>Disable Backspace/ Delete: </label>
+                            <input type="checkbox" class="daisyui-checkbox border-gray-500 daisyui-checkbox-sm"
+                            v-model="disableErasure" />
+                        </div>
                     </div>
                 </div>
                 <div class="w-full flex justify-center">
@@ -40,7 +46,7 @@
         </div>
         <div class="working-div flex space-y-1">
             <div class="h-3/4 w-full max-w-full flex flex-wrap max-h-[75%] overflow-y-scroll">
-                <span v-for="(word, index) in words" :key="index" :class="word.class">
+                <span v-for="(word, index) in words" :key="index" :class="word.class" class="font-nunito">
                     {{ word.word }} &nbsp;
                 </span>
             </div>
@@ -48,7 +54,7 @@
                 <textarea 
                     type="text" 
                     class="user-input" 
-                    placeholder="Start Typing"
+                    placeholder="Type In Here"
                     rows="6"
                     v-model="userInput"
                     @keydown.delete="preventErase"
@@ -76,7 +82,6 @@ export default {
         const numberOfParagraphs = ref(1);
         const baseArticle = ref("");
         const userInput = ref("");
-        const wordsEntered = ref(0);
         const disableErasure = ref(false);
 
         // functions
@@ -87,7 +92,6 @@ export default {
 
         function generate() {
             baseArticle.value = "";
-            wordsEntered.value = 0;
             userInput.value = "";
             if(numberOfParagraphs.value === 1) {
                 baseArticle.value = paragraph();
@@ -103,14 +107,14 @@ export default {
         }
 
         function validateProgress() {
-            wordsEntered.value++;
             const lastWord = userInput.value.split(" ").pop();
+            const numberOfWordsEntered = userInput.value.split(" ").length;
             console.log("Last word: " + lastWord);
-            console.log("Word at that index: " + words.value[wordsEntered.value - 1].word);
-            if(lastWord === words.value[wordsEntered.value - 1].word) {
-                words.value[wordsEntered.value - 1].class = "text-green-500";
+            console.log("Word at that index: " + words.value[numberOfWordsEntered - 1].word);
+            if(lastWord === words.value[numberOfWordsEntered - 1].word) {
+                words.value[numberOfWordsEntered - 1].class = "text-green-500";
             } else {
-                words.value[wordsEntered.value - 1].class = "text-red-500";
+                words.value[numberOfWordsEntered - 1].class = "text-red-500";
             }
         }
 
