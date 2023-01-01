@@ -112,7 +112,7 @@ export default {
 
         // computed
         const words = computed(() => {
-            const wordsArray = baseArticle.value.split(" ");
+            const wordsArray = baseArticle.value.split(" "); // the spaces are removed here
             const modifiedWordsArray = [];
             
             wordsArray.forEach((word) => {
@@ -120,18 +120,23 @@ export default {
                     word: word,
                     class: ""
                 });
+
+                // we then push a space to account for the one removed on line 115
+                // spaces are empty so no classes will be applied, but to prevent errors,
+                // we still push a space with the 'class' key applied
+                modifiedWordsArray.push({
+                    word: " ",
+                    class: ""
+                })
             });
-            
+            console.log(JSON.stringify(modifiedWordsArray));
             return modifiedWordsArray;
         });
 
         return {
             gameState, toogleGameState, numberOfParagraphs, generate, baseArticle, userInput,
-            words, preventErase, validateProgress, userEnteredWords, disableErasure
+            words, preventErase, validateProgress, disableErasure
         }
-    },
-    mounted: function() {
-        // console.log(article([2]));
     }
 }
 </script>
