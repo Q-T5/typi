@@ -44,7 +44,13 @@
                     {{ word.letter === ' ' ? '&nbsp;' : word.letter }}
                 </span>
             </div>
-            <div class="w-[70%] flex justify-center">
+            <div class="w-[70%] flex justify-center flex-col space-y-1">
+                <div class="w-fit h-fit">
+                    <button class="inline-flex daisyui-btn daisyui-btn-sm rounded-full" disabled>
+                        <span>go again</span>
+                        <i class="material-icons">restart_alt</i>
+                    </button>
+                </div>
                 <textarea 
                     type="text" 
                     class="user-input" 

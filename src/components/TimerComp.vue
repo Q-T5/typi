@@ -26,8 +26,8 @@
                 </button>
             </div>
         </div>
-        <div class="w-full h-[4%]">
-            <progress class="daisyui-progress w-full"
+        <div class="w-full h-fit">
+            <progress class="daisyui-progress w-full daisyui-progress-info"
                 value="40"
                 max="100"></progress>
         </div>
