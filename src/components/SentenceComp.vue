@@ -20,8 +20,11 @@
             <div class="controls-div">
                 <h1>Controls</h1>
             </div>
-            <div class="timer-div">
-                <h1>Timer Functionality</h1>
+            <div class="timer-div flex items-center justify-around">
+                <h1 class="text-3xl">00:00</h1>
+                <button class="timer-btn" @click="toogleGameState">
+                    <i class="material-icons">{{ gameState === "pause" ? 'play_arrow' : 'pause' }}</i>
+                </button>
             </div>
         </div>
         <div class="working-div">
@@ -31,12 +34,24 @@
 </template>
 
 <script lang="js">
+import { ref } from 'vue'
 import { sentence } from 'txtgen'
 
 export default {
     name: "SentenceComp",
     setup: function() {
+        // reactive data
+        const gameState = ref('pause');
 
+        // functions
+        function toogleGameState() {
+            gameState.value === "pause" ? 
+                gameState.value = "play" : gameState.value = "pause" 
+        }
+
+        return {
+            gameState, toogleGameState
+        }
     },
     mounted: function() {
         console.log(sentence());
