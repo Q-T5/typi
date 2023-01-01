@@ -20,12 +20,7 @@
             <div class="controls-div">
                 <h1>Controls</h1>
             </div>
-            <div class="timer-div flex items-center justify-around">
-                <h1 class="text-3xl">00:00</h1>
-                <button class="timer-btn" @click="toogleGameState">
-                    <i class="material-icons">{{ gameState === "pause" ? 'play_arrow' : 'pause' }}</i>
-                </button>
-            </div>
+            <timer-comp />
         </div>
         <div class="working-div">
             <h1>some heading</h1>
@@ -34,10 +29,14 @@
 </template>
 
 <script lang="js">
+import TimerComp from './TimerComp.vue'
 import { ref } from 'vue'
 
 export default {
     name: "ParagraphComp",
+    components: {
+        TimerComp
+    },
     setup: function() {
         // reactive data
         const gameState = ref('pause');
