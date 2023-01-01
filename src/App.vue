@@ -14,8 +14,8 @@
     </div>
     <div class="w-full h-[93%]">
       <transition
-        enter-active-class="animate__animated animate__bounceInRight"
-        leave-active-class="animate__animated animate__bounceOutLeft"
+        enter-active-class="animate__animated animate__fadeIn"
+        leave-active-class="animate__animated animate__fadeOut"
         mode="out-in">
         <component :is="component" class="w-full h-full p-2" />
       </transition>
