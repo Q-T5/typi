@@ -17,7 +17,9 @@
         enter-active-class="animate__animated animate__fadeIn"
         leave-active-class="animate__animated animate__fadeOut"
         mode="out-in">
-        <component :is="component" class="w-full h-full p-2" />
+        <keep-alive>
+          <component :is="component" class="w-full h-full p-2" />
+        </keep-alive>
       </transition>
     </div>
   </div>
