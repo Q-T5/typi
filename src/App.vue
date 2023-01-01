@@ -27,20 +27,18 @@
 
 <script lang>
 import { ref } from 'vue'
-import WordComp from './components/WordComp.vue'
 import SentenceComp from './components/SentenceComp.vue'
 import ParagraphComp from './components/ParagraphComp.vue'
 
 export default {
   name: "App",
   components: {
-    WordComp, SentenceComp, ParagraphComp
+    SentenceComp, ParagraphComp
   },
   setup: function() {
     // reactive data
-    const component = ref("WordComp");
+    const component = ref("SentenceComp");
     const buttons = ref([
-      { text: "Words", component: "WordComp" },
       { text: "Sentences", component: "SentenceComp" },
       { text: "Paragraphs", component: "ParagraphComp" },
     ]);
