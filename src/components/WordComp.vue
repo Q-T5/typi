@@ -15,8 +15,18 @@
 -->
 
 <template>
-    <div>
-        <h1>Word Component</h1>
+    <div class="flex">
+        <div class="flex flex-col w-1/3 justify-center px-2 space-y-2">
+            <div class="controls-div">
+                <h1>Controls</h1>
+            </div>
+            <div class="timer-div">
+                <h1>Timer Functionality</h1>
+            </div>
+        </div>
+        <div class="working-div">
+            <h1>some heading</h1>
+        </div>
     </div>
 </template>
 
