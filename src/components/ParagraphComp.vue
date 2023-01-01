@@ -41,7 +41,7 @@
         <div class="working-div flex space-y-1">
             <div class="h-3/4 w-full max-w-full flex flex-wrap max-h-[75%] overflow-y-scroll">
                 <span v-for="(word, index) in words" :key="index" :class="word.class">
-                    {{ word.word }} &nbsp;
+                    {{ word.word === " " ? '&nbsp;' : word.word }}
                 </span>
             </div>
             <div class="h-1/4 flex justify-center">
