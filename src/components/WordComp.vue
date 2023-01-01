@@ -18,7 +18,7 @@
     <div class="flex">
         <div class="flex flex-col w-1/3 justify-center px-2 space-y-2">
             <div class="controls-div">
-                <h1>Controls</h1>
+                <h1 class="text-green-500">Controls</h1>
                 <button class="daisyui-btn rounded-full" @click="generate">Generate</button>
             </div>
             <div class="timer-div flex flex-col justify-between">
@@ -38,7 +38,7 @@
             </div>
         </div>
         <div class="working-div flex space-y-2 items-center justify-center">
-            <div class="w-[75%] max-w-[75%] justify-center h-[25%] flex flex-wrap text-xl">
+            <div class="w-[75%] max-w-[75%] justify-center h-[25%] flex flex-wrap text-xl font-nunito">
                 <span v-for="(word, index) in words" :key="index" :class="word.class">
                     {{ word.letter === ' ' ? '&nbsp;' : word.letter }}
                 </span>
@@ -51,7 +51,8 @@
                     rows="6"
                     v-model="userInput"
                     @keydown.delete="preventErase"
-                    :disabled="baseSentence === '' "></textarea>
+                    :disabled="baseSentence === '' "
+                    :maxlength="baseSentence.length"></textarea>
             </div>
         </div>
     </div>
@@ -118,9 +119,9 @@ export default {
             // if the last letter in whatever the user has typed does not match
             // the letter at that index in the 'words' array, then they are not equal
             if(newValue.charAt(lettersSoFar - 1) !== words.value[lettersSoFar - 1].letter) {
-                words.value[lettersSoFar - 1].class="text-red-700";
+                words.value[lettersSoFar - 1].class="text-red-500";
             } else {
-                words.value[lettersSoFar - 1].class="text-green-700";
+                words.value[lettersSoFar - 1].class="text-green-500";
             }
         });
 
