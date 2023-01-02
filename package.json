@@ -12,6 +12,7 @@
     "animate.css": "^4.1.1",
     "daisyui": "^2.46.0",
     "txtgen": "^3.0.4",
+    "typewriter-effect": "^2.19.0",
     "vue": "^3.2.45"
   },
   "devDependencies": {
