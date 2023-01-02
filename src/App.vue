@@ -18,10 +18,14 @@
         leave-active-class="animate__animated animate__fadeOut"
         mode="out-in">
         <keep-alive>
-          <component :is="component" class="w-full h-full p-2" />
+          <component :is="component" class="w-full h-full p-2"
+            @showPerformanceModal="showPerformanceModal" />
         </keep-alive>
       </transition>
     </div>
+    <teleport to="#performance">
+      <performance-modal-comp v-if="showModal === true" />
+    </teleport>
   </div>
 </template>
 
@@ -30,11 +34,12 @@ import { ref } from 'vue'
 import SentenceComp from './components/SentenceComp.vue'
 import ParagraphComp from './components/ParagraphComp.vue'
 import HomeComp from './components/HomeComp.vue'
+import PerformanceModalComp from './components/PerformanceModalComp.vue'
 
 export default {
   name: "App",
   components: {
-    SentenceComp, ParagraphComp, HomeComp
+    SentenceComp, ParagraphComp, HomeComp,PerformanceModalComp
   },
   setup: function() {
     // reactive data
@@ -43,14 +48,22 @@ export default {
       { text: "Sentences", component: "SentenceComp" },
       { text: "Paragraphs", component: "ParagraphComp" },
     ]);
+    const showModal = ref(false);
 
     // functions
     function scrollDown() {
       document.getElementById("play").scrollIntoView(true);
     }
 
+    function showPerformanceModal() {
+      showModal.value = true;
+      setTimeout(() => {
+        showModal.value = false;
+      }, 3000);
+    }
+
     return {
-      component, buttons, scrollDown
+      component, buttons, scrollDown, showModal, showPerformanceModal
     }
   }
 }
