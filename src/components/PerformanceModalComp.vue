@@ -26,10 +26,10 @@
             <div class="h-[65%]">
                 <h2 class="text-center text-2xl underline">Results</h2>
                 <div class="flex flex-col h-full mt-5 items-center font-nunito text-lg">
-                    <p>Test: </p>
-                    <p>Time Taken: </p>
-                    <p>Words Per Minute: </p>
-                    <p>Accuracy: </p>
+                    <p>Test: {{ resultsInformation.test }}</p>
+                    <p>Time Taken: {{ resultsInformation.timeTaken }}</p>
+                    <p>Words Per Minute: {{ resultsInformation.wordsPerMinute }}</p>
+                    <p>Accuracy: {{ resultsInformation.accuracy }}</p>
                 </div>
             </div>
             <div class="flex justify-center space-x-2">
@@ -51,15 +51,26 @@
 </template>
 
 <script lang="js">
+import { ref } from 'vue'
+
 export default {
     name: "PerformanceModalComp",
     setup: function(props, context) {
+        //reactive data
+        const resultsInformation = ref({
+            test: "Name of Test",
+            timeTaken: "Time Taken",
+            wordsPerMinute: "Words Per Minute",
+            accuracy: "Number of Words/Letters Correct / Total"
+        });
+
+        // events
         function closePerformanceModal() {
             context.emit("closePerformanceModal");
         }
 
         return {
-            closePerformanceModal
+            closePerformanceModal, resultsInformation
         }
     }
 }
