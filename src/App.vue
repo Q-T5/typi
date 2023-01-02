@@ -19,12 +19,14 @@
         mode="out-in">
         <keep-alive>
           <component :is="component" class="w-full h-full p-2"
-            @showPerformanceModal="showPerformanceModal" />
+            @showPerformanceModal="showPerformanceModal = true" />
         </keep-alive>
       </transition>
     </div>
     <teleport to="#performance">
-      <performance-modal-comp v-if="showModal === true" />
+      <performance-modal-comp 
+        v-if="showPerformanceModal === true"
+        @closePerformanceModal="showPerformanceModal = false" />
     </teleport>
   </div>
 </template>
@@ -48,22 +50,15 @@ export default {
       { text: "Sentences", component: "SentenceComp" },
       { text: "Paragraphs", component: "ParagraphComp" },
     ]);
-    const showModal = ref(false);
+    const showPerformanceModal = ref(false);
 
     // functions
     function scrollDown() {
       document.getElementById("play").scrollIntoView(true);
     }
 
-    function showPerformanceModal() {
-      showModal.value = true;
-      setTimeout(() => {
-        showModal.value = false;
-      }, 3000);
-    }
-
     return {
-      component, buttons, scrollDown, showModal, showPerformanceModal
+      component, buttons, scrollDown, showPerformanceModal
     }
   }
 }
