@@ -45,21 +45,17 @@
             <timer-comp />
         </div>
         <div class="working-div flex space-y-1">
-            <div class="h-3/4 w-full max-w-full flex flex-wrap max-h-[75%] overflow-y-scroll">
-                <span v-for="(word, index) in words" :key="index" :class="word.class" class="font-nunito">
+            <div class="h-[65%] w-full max-w-full flex flex-wrap max-h-[75%] overflow-y-scroll">
+                <span 
+                    v-for="(word, index) in words" :key="index" :class="word.class" 
+                    class="font-nunito text-lg">
                     {{ word.word }} &nbsp;
                 </span>
             </div>
-            <div class="h-1/4 flex justify-center flex-col space-y-1">
-                <div class="w-fit h-fit">
-                    <button class="inline-flex daisyui-btn daisyui-btn-sm rounded-full" disabled>
-                        <span>go again</span>
-                        <i class="material-icons">restart_alt</i>
-                    </button>
-                </div>
+            <div class="h-[35%] flex justify-center flex-col space-y-1">
                 <textarea 
                     type="text" 
-                    class="user-input" 
+                    class="user-input h-[70%] self-center" 
                     placeholder="Type In Here"
                     rows="6"
                     v-model="userInput"
@@ -67,6 +63,15 @@
                     @keydown.space="validateProgress"
                     :disabled="baseArticle === '' "
                     :maxlength="baseArticle.length"></textarea>
+                <div class="w-fit self-start ml-11">
+                    <button 
+                        class="inline-flex daisyui-btn daisyui-btn-sm rounded-full" 
+                        :disabled="userInput.length !== baseArticle.length "
+                        @click="showPerformanceModal">
+                        <span>Done</span>
+                        <i class="material-icons">check_circle</i>
+                    </button>
+                </div>
             </div>
         </div>
     </div>
@@ -82,7 +87,7 @@ export default {
     components: {
         TimerComp
     },
-    setup: function() {
+    setup: function(props, context) {
         // reactive data
         const gameState = ref('pause');
         const numberOfParagraphs = ref(1);
@@ -138,9 +143,15 @@ export default {
             return modifiedWordsArray;
         });
 
+        // events
+        function showPerformanceModal(event) {
+            context.emit("showPerformanceModal");
+            return event.preventDefault();
+        }
+
         return {
             gameState, toogleGameState, numberOfParagraphs, generate, baseArticle, userInput,
-            words, preventErase, validateProgress, disableErasure
+            words, preventErase, validateProgress, disableErasure, showPerformanceModal
         }
     }
 }
