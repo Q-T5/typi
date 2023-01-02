@@ -45,12 +45,6 @@
                 </span>
             </div>
             <div class="w-[70%] flex justify-center flex-col space-y-1">
-                <div class="w-fit h-fit">
-                    <button class="inline-flex daisyui-btn daisyui-btn-sm rounded-full" disabled>
-                        <span>go again</span>
-                        <i class="material-icons">restart_alt</i>
-                    </button>
-                </div>
                 <textarea 
                     type="text" 
                     class="user-input" 
@@ -58,9 +52,17 @@
                     rows="6"
                     v-model="userInput"
                     @keydown.delete="preventErase"
-                    @keydown.enter="showPerformanceModal"
                     :disabled="baseSentence === '' "
                     :maxlength="baseSentence.length"></textarea>
+                <div class="w-fit h-fit">
+                    <button 
+                        class="inline-flex daisyui-btn daisyui-btn-sm rounded-full space-x-1" 
+                        :disabled="userInput.length !== baseSentence.length"
+                        @click="showPerformanceModal">
+                        <span>Done</span>
+                        <i class="material-icons">check_circle</i>
+                    </button>
+                </div>
             </div>
         </div>
     </div>
