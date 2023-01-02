@@ -58,6 +58,7 @@
                     rows="6"
                     v-model="userInput"
                     @keydown.delete="preventErase"
+                    @keydown.enter="showPerformanceModal"
                     :disabled="baseSentence === '' "
                     :maxlength="baseSentence.length"></textarea>
             </div>
@@ -75,7 +76,7 @@ export default {
     components: {
         TimerComp
     },
-    setup: function() {
+    setup: function(props, context) {
         // reactive data
         const disableErasure = ref(false);
 
@@ -92,6 +93,11 @@ export default {
             if(disableErasure.value === true) {
                 return event.preventDefault();
             }
+        }
+
+        function showPerformanceModal(event) {
+            context.emit("showPerformanceModal");
+            return event.preventDefault();
         }
 
         // computed properties
@@ -120,7 +126,8 @@ export default {
         });
 
         return {
-            generate, words, userInput, baseSentence, preventErase, disableErasure
+            generate, words, userInput, baseSentence, preventErase, disableErasure,
+            showPerformanceModal
         }
     }
 }
