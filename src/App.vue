@@ -1,6 +1,6 @@
 <template>
   <div class="w-full h-screen">
-    <h1 class="text-3xl">App Says: hello</h1>
+    <home-comp />
   </div>
   <div class="w-full h-screen flex flex-col">
     <div class="w-full h-[7%] shadow-md flex justify-around px-4">
@@ -29,11 +29,12 @@
 import { ref } from 'vue'
 import SentenceComp from './components/SentenceComp.vue'
 import ParagraphComp from './components/ParagraphComp.vue'
+import HomeComp from './components/HomeComp.vue'
 
 export default {
   name: "App",
   components: {
-    SentenceComp, ParagraphComp
+    SentenceComp, ParagraphComp, HomeComp
   },
   setup: function() {
     // reactive data
