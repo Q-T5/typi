@@ -15,11 +15,37 @@
 -->
 
 <template>
-    <div class="fixed top-0 left-0 bg-neutral/50 w-full h-full flex justify-center items-center">
-        <div class="w-[50%] p-2 border-2 rounded-md bg-neutral text-white">
-            <h2>Notification</h2>
-            <p>Some filler text</p>
-            <button class="daisyui-btn" @click="closePerformanceModal">close</button>
+    <div class="fixed top-0 left-0 bg-neutral/90 w-full h-full flex justify-center items-center">
+        <div class="w-[50%] h-[50%] p-2 border-2 rounded-md bg-secondary flex flex-col justify-around">
+            <div class="flex justify-center">
+                <img 
+                    src="/src/assets/logo.svg" 
+                    alt="app-logo"
+                    class="w-14" />
+            </div>
+            <div class="h-[65%]">
+                <h2 class="text-center text-2xl underline">Results</h2>
+                <div class="flex flex-col h-full mt-5 items-center font-nunito text-lg">
+                    <p>Test: </p>
+                    <p>Time Taken: </p>
+                    <p>Words Per Minute: </p>
+                    <p>Accuracy: </p>
+                </div>
+            </div>
+            <div class="flex justify-center space-x-2">
+                <button 
+                    class="inline-flex daisyui-btn daisyui-btn-sm rounded-full space-x-1" 
+                    @click="closePerformanceModal">
+                    <span>Close</span>
+                    <i class="material-icons">close</i>
+                </button>
+                <button 
+                    class="inline-flex daisyui-btn daisyui-btn-sm rounded-full space-x-1" 
+                    @click="closePerformanceModal">
+                    <span>Go Again</span>
+                    <i class="material-icons">replay</i>
+                </button>
+            </div>
         </div>
     </div>
 </template>
