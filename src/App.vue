@@ -1,8 +1,8 @@
 <template>
   <div class="w-full h-screen">
-    <home-comp />
+    <home-comp @scrollDown="scrollDown" />
   </div>
-  <div class="w-full h-screen flex flex-col">
+  <div class="w-full h-screen flex flex-col" id="play">
     <div class="w-full h-[7%] shadow-md flex justify-around px-4">
       <button 
         v-for="(button, index) in buttons" :key="index"
@@ -45,9 +45,12 @@ export default {
     ]);
 
     // functions
+    function scrollDown() {
+      document.getElementById("play").scrollIntoView(true);
+    }
 
     return {
-      component, buttons
+      component, buttons, scrollDown
     }
   }
 }

@@ -45,7 +45,7 @@
                 </p>
             </div>
             <div class="w-[30%] max-w-[30%]">
-                <button class="get-started">Get Started</button>
+                <button class="get-started" @click="scrollDown">Get Started</button>
             </div>
         </div>
     </div>
@@ -56,9 +56,14 @@ import TypeWriter from 'typewriter-effect/dist/core'
 
 export default {
     name: "HomeComp",
-    setup: function() {
-        return {
+    setup: function(props, context) {
+        // functions
+        function scrollDown() {
+            context.emit('scrollDown');
+        }
 
+        return {
+            scrollDown
         }
     },
     mounted: function() {
