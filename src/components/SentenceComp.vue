@@ -97,11 +97,6 @@ export default {
             }
         }
 
-        function showPerformanceModal(event) {
-            context.emit("showPerformanceModal");
-            return event.preventDefault();
-        }
-
         // computed properties
         const words = computed(() => {
             const lettersArray = [];
@@ -126,6 +121,12 @@ export default {
                 words.value[lettersSoFar - 1].class="text-green-500";
             }
         });
+
+        // events
+        function showPerformanceModal(event) {
+            context.emit("showPerformanceModal");
+            return event.preventDefault();
+        }
 
         return {
             generate, words, userInput, baseSentence, preventErase, disableErasure,
