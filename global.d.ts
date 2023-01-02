@@ -13,3 +13,4 @@
 // limitations under the License.
 
 declare module 'daisyui';
+declare module 'typewriter-effect/dist/core';
