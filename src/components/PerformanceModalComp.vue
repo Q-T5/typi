@@ -19,7 +19,7 @@
         <div class="w-[50%] p-2 border-2 rounded-md bg-neutral text-white">
             <h2>Notification</h2>
             <p>Some filler text</p>
-            <button class="daisyui-btn">close</button>
+            <button class="daisyui-btn" @click="closePerformanceModal">close</button>
         </div>
     </div>
 </template>
@@ -27,17 +27,14 @@
 <script lang="js">
 export default {
     name: "PerformanceModalComp",
-    setup: function() {
+    setup: function(props, context) {
+        function closePerformanceModal() {
+            context.emit("closePerformanceModal");
+        }
 
+        return {
+            closePerformanceModal
+        }
     }
 }
 </script>
-
-<style scoped>
-
-.modal > div {
-    background-color: #fff;
-    padding: 50px;
-    border-radius: 10px;
-}
-</style>
