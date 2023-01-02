@@ -26,3 +26,27 @@
     @apply rounded-md border-[1px] w-[90%] py-2 px-4 outline-none
     disabled:border-gray-500 border-green-500;
 }
+
+.logo-text {
+    @apply uppercase font-ubuntu font-bold text-2xl;
+}
+
+.nav-buttons {
+    @apply get-started no-animation;
+}
+
+.home-heading {
+    @apply text-7xl;
+}
+
+.home-subheading {
+    @apply text-5xl;
+}
+
+.home-par {
+    @apply text-xl font-nunito;
+}
+
+.get-started {
+    @apply daisyui-btn rounded-full;
+}
